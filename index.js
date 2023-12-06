@@ -3,6 +3,7 @@ const express = require("express");
 const user = require("./routes/user.js");
 const notes = require("./routes/notes.js");
 const image = require("./routes/image.js");
+require("dotenv").config();
 connectToMongo();
 const cors = require("cors");
 const app = express();
@@ -13,7 +14,9 @@ app.use("/api/user", user);
 app.use("/api/notes", notes);
 app.use("/api/image", image);
 
-app.listen(5000, () => {
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
   console.log("Server is listening at port 5000");
 });
 
